@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'commander/import'
+require 'gitfeats'
+
+program :name, 'git-feats'
+program :version, GitFeats::VERSION
+program :description, 'Complete Git feats on the command line'
+
+default_command :default
+
+command :feats do |c|
+  c.syntax = 'git-feats feats'
+  c.description = 'Displays completed feats'
+  c.action do |args, options|
+    puts 'feats'
+  end
+end
+
+command :version do |c|
+  c.syntax = 'git-feats version'
+  c.description = 'Display git & git-feats version information'
+  c.action do |args, options|
+    puts `git version`
+    puts "git-feats version #{GitFeats::VERSION}"
+  end
+end
+
+command :default do |c|
+  c.syntax = 'git-feats COMMAND'
+  c.description = 'Run a git command'
+  c.action do |args, options|
+    puts args
+  end
+end
