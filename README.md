@@ -1,24 +1,14 @@
-# Git::Feats
+# git-feats
 
-TODO: Write a gem description
+Complete git feats from the command line!
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'git-feats'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install git-feats
 
 ## Usage
 
-TODO: Write usage instructions here
+`git-feats` works best when aliased as `git`.
 
 ## Contributing
 

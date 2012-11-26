@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'gitfeats/version'
 
 Gem::Specification.new do |gem|
@@ -18,7 +19,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_runtime_dependency "commander", "~> 4.1.2"
   gem.add_development_dependency "rake"
   gem.add_development_dependency "cucumber", "~> 1.2.1"
 end
