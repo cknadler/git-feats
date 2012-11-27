@@ -7,6 +7,7 @@ module GitFeats
     # initialize a new runner
     def initialize(*args)
       @args = Args.new(args)
+      Commands.parse(@args)
     end
 
     # execute shortcut

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'gitfeats'
+require 'git_feats'
 
 GitFeats::Runner.execute(*ARGV)
