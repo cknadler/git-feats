@@ -9,184 +9,149 @@ module GitFeats
       case args.command
 
       when 'add'
-        unlock_feat "Bricks and Mortar",
-          "Added files to the index area for inclusion in the next commit with git add"
+        unlock_feat :bricks_and_mortar
 
       when 'am'
-        unlock_feat "Delivery",
-          "Applied a patch using git am"
+        unlock_feat :delivery
 
       when 'bisect'
-        unlock_feat "Bug Hunter",
-          "Used git bisect to perform a binary search to find which change introduced a bug"
+        unlock_feat :bug_hunter
 
       when 'blame'
-        unlock_feat "Blame Game",
-          "Used git blame to annotate a file with information about changes"
+        unlock_feat :blame_game
 
       when 'bundle'
-        unlock_feat "Cold Transfer",
+        unlock_feat :cold_transfer
           "Bundled git objects and refs with git bundle"
 
       when 'cherry-pick'
-        unlock_feat "Fine Grain",
-          "Applied a commit from one branch to another with git cherry-pick"
+        unlock_feat :fine_grain
 
       when 'checkout'
-        unlock_feat "Shopping Spree",
-          "Changed branches with git checkout"
+        unlock_feat :shopping_spree
         if args[2] == '-b'
-          unlock_feat "Impulse Buy", 
-            "Created a new branch with git checkout -b"
+          unlock_feat :impulse_buy
         end
 
       when 'clean'
-        unlock_feat "Mr. Clean",
-          "Used git clean to remove untracked files from the working tree"
+        unlock_feat :clean
 
       when 'clone'
-        unlock_feat "Replicator",
-          "Used git clone to copy a repository into a new directory"
+        unlock_feat :replicator
 
       when 'commit'
-        unlock_feat "Author",
-          "Made a commit using git commit"
+        unlock_feat :author
 
       when 'commit-tree' || 'hash-object' || 'update-index' || 'update-ref'
-        unlock_feat "Pretty Hardcore",
-          "Used a command that most git users have never even heard of"
+        unlock_feat :hardcore
 
       when 'config'
-        unlock_feat "Tinkerer",
-          "Used git config to set configuration options"
+        unlock_feat :tinkerer
 
       when 'diff'
-        unlock_feat "Foreshadowing",
-          "Used git diff to see a diff of changes"
+        unlock_feat :foreshadowing
 
       when 'fetch'
-        unlock_feat "Expansion",
-          "Fetched objects and refs from another repository"
+        unlock_feat :fetch
 
       when 'filter-branch'
-        unlock_feat "Hedge Trimming",
-          "Rewrote a branch with git filter-branch"
+        unlock_feat :hedge_trimming
 
       when 'format-patch'
-        unlock_feat "Licking Stamps",
-          "Prepared patches for email submission with git format-patch"
+        unlock_feat :mail_clerk
 
       when 'gc'
-        unlock_feat "Housekeeping",
-          "Optimized a local repository with git gc"
+        unlock_feat :housekeeping
 
       when 'grep'
-        unlock_feat "Private Investigator",
-          "Searched tracked files using git grep"
+        unlock_feat :private_investigator
 
       when 'imap-send'
-        unlock_feat "Mailman",
-          "Sent patches to an IMAP folder using git imap-send"
+        unlock_feat :mailman
 
       when 'init'
-        unlock_feat "Empty Lot",
-          "Initialize a git repository with git init"
+        unlock_feat :empty_lot
 
       when 'instaweb'
-        unlock_feat "Pixels Everywhere",
-          "Browse your working repository on gitweb with git instaweb"
+        unlock_feat :pixels_everywhere
 
       when 'log'
-        unlock_feat "Historian",
-          "Read the commit history with git log"
+        unlock_feat :historian
 
       when 'merge'
-        unlock_feat "Unification",
-          "Joined two or more commit histories with git merge"
+        unlock_feat :unification
 
       when 'mv'
-        unlock_feat "Moving Day",
-          "Moved something with git mv"
+        unlock_feat :moving_day
 
       when 'pull'
-        unlock_feat "Assimilation",
-          "Fetched from and merged with another repository with git pull"
+        unlock_feat :assimilation
 
       when 'push'
-        unlock_feat "Social Butterfly",
-          "Pushed a branch to a remote repository using git push"
+        unlock_feat :social_butterfly
 
       when 'rebase'
-        unlock_feat "Slice and Dice",
-          "Rebased local commits to updated upstream head"
+        unlock_feat :slice_and_dice
 
       when 'reflog'
-        unlock_feat "Seamstress",
-          "Investigated old branches using git reflog"
+        unlock_feat :seamstress
 
       when 'remote'
         if args[2] == 'add'
-          unlock_feat "Connected",
-            "Added an external repository with git remote add"
+          unlock_feat :connected
         end
 
       when 'reset'
-        unlock_feat "Second Guess",
-          "Changed the current HEAD state with git reset"
+        unlock_feat :second_guess
 
       when 'rm'
-        unlock_feat "Destruction",
-          "Removed something with git rm"
+        unlock_feat :fireball
 
       when 'shell'
-        unlock_feat "Annex",
-          "Loaded a restricted login shell for Git-only SSH access with git shell"
+        unlock_feat :annex
 
       when 'show'
-        unlock_feat "Showoff",
-          "Displayed one or more objects (blobs, trees, tags and commits) with git show"
+        unlock_feat :showoff
 
       when 'show-branch'
-        unlock_feat "Forest Map",
-          "Displayed a branch graph with git show-branch"
+        unlock_feat :forest_cartography
 
       when 'stash'
-        unlock_feat "Hoarder",
-          "Stashed local changes using git stash"
+        unlock_feat :hoarder
 
       when 'status'
-        unlock_feat "Status Report",
-          "Viewed the working tree status with git status"
+        unlock_feat :status_report
 
       when 'submodule'
         if args[2] == 'add' 
-          unlock_feat "Sublet",
-            "Added a submodule with git submodule add"
+          unlock_feat :sublet
         elsif args[2] == 'update'
-          unlock_feat "Renovations",
-            "Updated one or more submodules with git submodule update"
+          unlock_feat :renovations
         end
 
       when 'svn'
-        unlock_feat "Dinosaur",
-          "Streamed changes to svn with git svn"
+        unlock_feat :dinosaur
 
       when 'tag'
-        unlock_feat "Label Wizard",
-          "Created, deleted or listed one or more tags with git tag"
+        unlock_feat :label_wizard
 
       when 'whatchanged'
-        unlock_feat "History Professor",
-          "Showed the difference each commit introduced with git whatchanged"
+        unlock_feat :historian
 
       end
     end
 
     private
 
-    def unlock_feat(name, desc)
-      puts name
-      puts desc
+    def unlock_feat(feat_symbol)
+      
+      feat = Feats.feat(feat_symbol)
+
+      puts "\n" + '*' * 80
+      puts "Feat Completed!".center(80)
+      puts feat["name"].center(80)
+      puts feat["desc"].center(80)
+      puts '*' * 80 + "\n\n"
     end
   end
 end

@@ -1,48 +1,22 @@
-module GitFeats
+require 'yaml'
 
-  COMMANDS = ['add',
-              'am',
-              'bisect',
-              'blame',
-              'bundle',
-              'cherry-pick',
-              'checkout',
-              'clean',
-              'clone',
-              'commit',
-              'commit-tree',
-              'config',
-              'diff',
-              'fetch',
-              'filter-branch',
-              'flow',
-              'format-patch',
-              'gc',
-              'grep',
-              'hash-object',
-              'imap-send',
-              'init',
-              'instaweb',
-              'log',
-              'merge',
-              'mv',
-              'p4',
-              'pull',
-              'push',
-              'rebase',
-              'reflog',
-              'remote',
-              'reset',
-              'rm',
-              'shell',
-              'show',
-              'show-branch',
-              'stash',
-              'status',
-              'submodule',
-              'svn',
-              'tag',
-              'update-index',
-              'update-ref',
-              'whatchanged']
+module GitFeats
+  
+  module Feats
+
+    extend self
+
+    FEATS_PATH = 'feats.yml'
+
+    def feat(symbol)
+      feats[symbol.to_s] 
+    end
+
+    private
+
+    def feats
+      @feats ||= YAML.load_file(FEATS_PATH)
+    end
+
+  end
 end
