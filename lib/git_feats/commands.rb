@@ -143,15 +143,13 @@ module GitFeats
 
     private
 
-    def unlock_feat(feat_symbol)
-      
-      feat = Feats.feat(feat_symbol)
+    def unlock_feat(feat)
+      @manifest = Manifest.instance
 
-      puts "\n" + '*' * 80
-      puts "Feat Completed!".center(80)
-      puts feat["name"].center(80)
-      puts feat["desc"].center(80)
-      puts '*' * 80 + "\n\n"
+      unless @manifest.completed_feat?(feat)
+        @manifest.add_completed_feat(feat)
+        Reporter.report_feat_completed(feat)
+      end
     end
   end
 end

@@ -1,169 +1,169 @@
 ---
-bricks_and_mortar:
-  name: "Bricks and Mortar"
-  desc: "Added files to the index area for inclusion in the next commit with git add"
+:bricks_and_mortar:
+  :name: "Bricks and Mortar"
+  :desc: "Added files to the index area for inclusion in the next commit with git add"
 
-delivery:
-  name: "Delivery"
-  desc: "Applied a patch using git am"
+:delivery:
+  :name: "Delivery"
+  :desc: "Applied a patch using git am"
 
-bug_hunter:
-  name: "Bug Hunter"
-  desc: "Used git bisect to perform a binary search to find which change introduced a bug"
+:bug_hunter:
+  :name: "Bug Hunter"
+  :desc: "Used git bisect to perform a binary search to find which change introduced a bug"
 
-blame_game:
-  name: "Blame Game"
-  desc: "Used git blame to annotate a file with information about changes"
+:blame_game:
+  :name: "Blame Game"
+  :desc: "Used git blame to annotate a file with information about changes"
 
-cold_transfer:
-  name: "Cold Transfer"
-  desc: "Bundled git objects and refs with git bundle"
+:cold_transfer:
+  :name: "Cold Transfer"
+  :desc: "Bundled git objects and refs with git bundle"
 
-fine_grain:
-  name: "Fine Grain"
-  desc: "Applied a commit from one branch to another with git cherry-pick"
+:fine_grain:
+  :name: "Fine Grain"
+  :desc: "Applied a commit from one branch to another with git cherry-pick"
 
-shopping_spree:
-  name: "Shopping Spree"
-  desc: "Changed branches with git checkout"
+:shopping_spree:
+  :name: "Shopping Spree"
+  :desc: "Changed branches with git checkout"
 
-impulse_buy:
-  name: "Impulse Buy" 
-  desc: "Created a new branch with git checkout -b"
+:impulse_buy:
+  :name: "Impulse Buy" 
+  :desc: "Created a new branch with git checkout -b"
 
-mr_clean:
-  name: "Mr. Clean"
-  desc: "Used git clean to remove untracked files from the working tree"
+:mr_clean:
+  :name: "Mr. Clean"
+  :desc: "Used git clean to remove untracked files from the working tree"
 
-replicator:
-  name: "Replicator"
-  desc: "Used git clone to copy a repository into a new directory"
+:replicator:
+  :name: "Replicator"
+  :desc: "Used git clone to copy a repository into a new directory"
 
-author:
-  name: "Author"
-  desc: "Made a commit using git commit"
+:author:
+  :name: "Author"
+  :desc: "Made a commit using git commit"
 
-hardcore:
-  name: "Hardcore"
-  desc: "Used a command that most git users have never even heard of"
+:hardcore:
+  :name: "Hardcore"
+  :desc: "Used a command that most git users have never even heard of"
 
-tinkerer:
-  name: "Tinkerer"
-  desc: "Used git config to set configuration options"
+:tinkerer:
+  :name: "Tinkerer"
+  :desc: "Used git config to set configuration options"
 
-foreshadowing:
-  name: "Foreshadowing"
-  desc: "Used git diff to see a diff of changes"
+:foreshadowing:
+  :name: "Foreshadowing"
+  :desc: "Used git diff to see a diff of changes"
 
-expansion:
-  name: "Expansion"
-  desc: "Fetched objects and refs from another repository"
+:expansion:
+  :name: "Expansion"
+  :desc: "Fetched objects and refs from another repository"
 
-hedge_trimming:
-  name: "Hedge Trimming"
-  desc: "Rewrote a branch with git filter-branch"
+:hedge_trimming:
+  :name: "Hedge Trimming"
+  :desc: "Rewrote a branch with git filter-branch"
 
-mail_clerk:
-  name: "Mail Clerk"
-  desc: "Prepared patches for email submission with git format-patch"
+:mail_clerk:
+  :name: "Mail Clerk"
+  :desc: "Prepared patches for email submission with git format-patch"
 
-housekeeping:
-  name: "Housekeeping"
-  desc: "Optimized a local repository with git gc"
+:housekeeping:
+  :name: "Housekeeping"
+  :desc: "Optimized a local repository with git gc"
 
-private_investigator:
-  name: "Private Investigator"
-  desc: "Searched tracked files using git grep"
+:private_investigator:
+  :name: "Private Investigator"
+  :desc: "Searched tracked files using git grep"
 
-mailman:
-  name: "Mailman"
-  desc: "Sent patches to an IMAP folder using git imap-send"
+:mailman:
+  :name: "Mailman"
+  :desc: "Sent patches to an IMAP folder using git imap-send"
 
-empty_lot:
-  name: "Empty Lot"
-  desc: "Initialize a git repository with git init"
+:empty_lot:
+  :name: "Empty Lot"
+  :desc: "Initialize a git repository with git init"
 
-pixels_everywhere:
-  name: "Pixels Everywhere"
-  desc: "Browse your working repository on gitweb with git instaweb"
+:pixels_everywhere:
+  :name: "Pixels Everywhere"
+  :desc: "Browse your working repository on gitweb with git instaweb"
 
-historian:
-  name: "Historian"
-  desc: "Read the commit history with git log"
+:historian:
+  :name: "Historian"
+  :desc: "Read the commit history with git log"
 
-unification:
-  name: "Unification"
-  desc: "Joined two or more commit histories with git merge"
+:unification:
+  :name: "Unification"
+  :desc: "Joined two or more commit histories with git merge"
 
-moving_day:
-  name: "Moving Day"
-  desc: "Moved something with git mv"
+:moving_day:
+  :name: "Moving Day"
+  :desc: "Moved something with git mv"
 
-assimilation:
-  name: "Assimilation"
-  desc: "Fetched from and merged with another repository with git pull"
+:assimilation:
+  :name: "Assimilation"
+  :desc: "Fetched from and merged with another repository with git pull"
 
-social_butterfly:
-  name: "Social Butterfly"
-  desc: "Pushed a branch to a remote repository using git push"
+:social_butterfly:
+  :name: "Social Butterfly"
+  :desc: "Pushed a branch to a remote repository using git push"
 
-slice_and_dice:
-  name: "Slice and Dice"
-  desc: "Rebased local commits to updated upstream head"
+:slice_and_dice:
+  :name: "Slice and Dice"
+  :desc: "Rebased local commits to updated upstream head"
 
-seamstress:
-  name: "Seamstress"
-  desc: "Investigated old branches using git reflog"
+:seamstress:
+  :name: "Seamstress"
+  :desc: "Investigated old branches using git reflog"
 
-connected:
-  name: "Connected"
-  desc: "Added an external repository with git remote add"
+:connected:
+  :name: "Connected"
+  :desc: "Added an external repository with git remote add"
 
-second_guess:
-  name: "Second Guess"
-  desc: "Changed the current HEAD state with git reset"
+:second_guess:
+  :name: "Second Guess"
+  :desc: "Changed the current HEAD state with git reset"
 
-fireball:
-  name: "Fireball"
-  desc: "Removed something with git rm"
+:fireball:
+  :name: "Fireball"
+  :desc: "Removed something with git rm"
 
-annex:
-  name: "Annex"
-  desc: "Loaded a restricted login shell for Git-only SSH access with git shell"
+:annex:
+  :name: "Annex"
+  :desc: "Loaded a restricted login shell for Git-only SSH access with git shell"
 
-showoff:
-  name: "Showoff"
-  desc: "Displayed one or more objects (blobs trees tags and commits) with git show"
+:showoff:
+  :name: "Showoff"
+  :desc: "Displayed one or more objects (blobs trees tags and commits) with git show"
 
-forest_cartography:
-  name: "Forest Cartography"
-  desc: "Displayed a branch graph with git show-branch"
+:forest_cartography:
+  :name: "Forest Cartography"
+  :desc: "Displayed a branch graph with git show-branch"
 
-hoarder:
-  name: "Hoarder"
-  desc: "Stashed local changes using git stash"
+:hoarder:
+  :name: "Hoarder"
+  :desc: "Stashed local changes using git stash"
 
-status_report:
-  name: "Status Report"
-  desc: "Viewed the working tree status with git status"
+:status_report:
+  :name: "Status Report"
+  :desc: "Viewed the working tree status with git status"
 
-sublet:
-  name: "Sublet"
-  desc: "Added a submodule with git submodule add"
+:sublet:
+  :name: "Sublet"
+  :desc: "Added a submodule with git submodule add"
 
-renovations:
-  name: "Renovations"
-  desc: "Updated one or more submodules with git submodule update"
+:renovations:
+  :name: "Renovations"
+  :desc: "Updated one or more submodules with git submodule update"
 
-dinosaur:
-  name: "Dinosaur"
-  desc: "Streamed changes to svn with git svn"
+:dinosaur:
+  :name: "Dinosaur"
+  :desc: "Streamed changes to svn with git svn"
 
-label_wizard:
-  name: "Label Wizard"
-  desc: "Created deleted or listed one or more tags with git tag"
+:label_wizard:
+  :name: "Label Wizard"
+  :desc: "Created deleted or listed one or more tags with git tag"
 
-historian:
-  name: "Historian"
-  desc: "Showed the difference each commit introduced with git whatchanged"
+:historian:
+  :name: "Historian"
+  :desc: "Showed the difference each commit introduced with git whatchanged"
 ---
