@@ -144,10 +144,10 @@ module GitFeats
     private
 
     def unlock_feat(feat)
-      @manifest = Manifest.instance
+      @data = Data.instance
 
-      unless @manifest.completed_feat?(feat)
-        @manifest.add_completed_feat(feat)
+      unless @data.completed_feat?(feat)
+        @data.add_completed_feat(feat)
         Reporter.report_feat_completed(feat)
       end
     end
