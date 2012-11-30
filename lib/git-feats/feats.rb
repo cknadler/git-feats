@@ -1,12 +1,11 @@
 require 'yaml'
 
 module GitFeats
-
   module Feats
 
     extend self
 
-    FEATS_PATH = Gem::Specification.find_by_name("git-feats").gem_dir + '/feats.yml'
+    FEATS_PATH = File.dirname(__FILE__) + '/feats/feats.yml'
     
     def feat(sym)
       feats[sym]

@@ -1,0 +1,5 @@
+require 'git-feats/completed'
+require 'git-feats/feats'
+require 'git-feats/reporter'
+require 'git-feats/runner'
+require 'git-feats/version'
