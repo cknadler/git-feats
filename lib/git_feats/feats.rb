@@ -6,7 +6,7 @@ module GitFeats
 
     extend self
 
-    FEATS_PATH = 'feats.yml'
+    FEATS_PATH = Gem::Specification.find_by_name("git-feats").gem_dir + '/feats.yml'
     
     def feat(sym)
       feats[sym]
