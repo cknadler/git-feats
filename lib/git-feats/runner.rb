@@ -13,16 +13,11 @@ module GitFeats
     # Parse for commands and feats
     def run
       parse_feats
-      parse_commands
       execute_git_command
     end
 
     private
 
-    def parse_commands
-
-    end
-    
     def parse_feats
       case @args[0]
       when 'add'

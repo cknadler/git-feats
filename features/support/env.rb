@@ -1,4 +1,4 @@
-require 'git_feats'
+require 'git-feats'
 require 'aruba/api'
 require 'aruba/cucumber'
 require 'test/unit/assertions'
