@@ -10,17 +10,50 @@ Currently still in development and not on rubygems. Eventually:
 
 ## Usage
 
-`git-feats` works best when aliased as `git`.
+#### Alias
+
+`git-feats` works best when aliased as `git`. Paste the following into your shell config file.
+
+```
+alias git=git-feats
+```
+
+#### Git
+
+After you alias `git-feats`, just keep using `git` like you always have. Occasionally, you will complete feats and it will look like this:
+
+```
+$ git status
+
+********************************************************************************
+                                Feat Completed!                                 
+                                 Status Report                                  
+                 Viewed the working tree status with git status                 
+********************************************************************************
+
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   README.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+
+```
 
 ## Contributing
 
-#### `git-feats` needs:
+git-feats has a dead simple interface for making feats. 
+
+Simply add a feat to the `lib/git-feats/feats/feats.yml` file and it will work in the gem.
+
+If you are looking to contribute, that is a great place to start.
+
+Also, the following:
 
 * Tests (probably RSpec)
-* More feats
-  * Add a feat in `lib/feats/feats.yml`
-  * Add a rule for the feat in `lib/runner.rb` under `def parse_feats`
-  * Test it
+* Code Cleanup
 
 Any suggestions are also welcomed with open arms.
 
