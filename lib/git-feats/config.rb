@@ -12,7 +12,7 @@ module GitFeats
 
     # Returns the config value for api key
     def api_key
-      @api_key ||= config_value.split('-')[1]
+      @api_key ||= config_value.split('-')[1].chomp
     end
 
     # Check if config exists and is configured properly
