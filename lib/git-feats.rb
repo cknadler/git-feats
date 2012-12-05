@@ -1,5 +1,7 @@
 require 'git-feats/serializer'
 require 'git-feats/args'
+require 'git-feats/api'
+require 'git-feats/config'
 require 'git-feats/checker'
 require 'git-feats/completed'
 require 'git-feats/feats'

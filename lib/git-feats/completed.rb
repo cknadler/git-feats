@@ -24,5 +24,9 @@ module GitFeats
     def exists?(feat)
       @completed.include?(feat.to_s)
     end
+
+    def data
+      @completed
+    end
   end
 end

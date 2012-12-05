@@ -26,5 +26,9 @@ module GitFeats
     def count(pattern)
       @history[pattern]
     end
+
+    def data
+      @history
+    end
   end
 end
