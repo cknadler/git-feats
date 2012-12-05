@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
 
   s.add_runtime_dependency "json"
+  s.add_runtime_dependency "faraday", "~> 0.8.4"
+
   s.add_development_dependency "rake",     "~> 10.0.2"
-  s.add_development_dependency "cucumber", "~> 1.2.1"
-  s.add_development_dependency "aruba",    "~> 0.5.1"
 end
