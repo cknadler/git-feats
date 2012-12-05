@@ -1,8 +1,13 @@
 module GitFeats
   class Runner
 
-    def initialize(args)
-      @args = args
+    # Creates a new Runner
+    #
+    # args - The args to be run with git
+    def initialize(*args)
+      @args = Args.new(args)
+      # parse args for feats
+      Checker.check(@args)
     end
 
     # Run shortcut
@@ -10,121 +15,9 @@ module GitFeats
       Runner.new(args).run
     end
 
-    # Parse for commands and feats
+    # Execute git command
     def run
-      parse_feats
-      execute_git_command
-    end
-
-    private
-
-    def parse_feats
-      case @args[0]
-      when 'add'
-        unlock_feat :bricks_and_mortar
-      when 'am'
-        unlock_feat :delivery
-      when 'bisect'
-        unlock_feat :bug_hunter
-      when 'blame'
-        unlock_feat :blame_game
-      when 'bundle'
-        unlock_feat :cold_transfer
-      when 'cherry-pick'
-        unlock_feat :fine_grain
-      when 'checkout'
-        unlock_feat :shopping_spree
-        if @args[1] == '-b'
-          unlock_feat :impulse_buy
-        end
-      when 'clean'
-        unlock_feat :clean
-      when 'clone'
-        unlock_feat :replicator
-      when 'commit'
-        unlock_feat :author
-      when 'commit-tree' || 'hash-object' || 'update-index' || 'update-ref'
-        unlock_feat :hardcore
-      when 'config'
-        unlock_feat :tinkerer
-      when 'diff'
-        unlock_feat :foreshadowing
-      when 'fetch'
-        unlock_feat :fetch
-      when 'filter-branch'
-        unlock_feat :hedge_trimming
-      when 'format-patch'
-        unlock_feat :mail_clerk
-      when 'gc'
-        unlock_feat :housekeeping
-      when 'grep'
-        unlock_feat :private_investigator
-      when 'imap-send'
-        unlock_feat :mailman
-      when 'init'
-        unlock_feat :empty_lot
-      when 'instaweb'
-        unlock_feat :pixels_everywhere
-      when 'log'
-        unlock_feat :historian
-      when 'merge'
-        unlock_feat :unification
-      when 'mv'
-        unlock_feat :moving_day
-      when 'pull'
-        unlock_feat :assimilation
-      when 'push'
-        unlock_feat :social_butterfly
-      when 'rebase'
-        unlock_feat :slice_and_dice
-      when 'reflog'
-        unlock_feat :seamstress
-      when 'remote'
-        if @args[1] == 'add'
-          unlock_feat :connected
-        end
-      when 'reset'
-        unlock_feat :second_guess
-      when 'rm'
-        unlock_feat :fireball
-      when 'shell'
-        unlock_feat :annex
-      when 'show'
-        unlock_feat :showoff
-      when 'show-branch'
-        unlock_feat :forest_cartography
-      when 'stash'
-        unlock_feat :hoarder
-      when 'status'
-        unlock_feat :status_report
-      when 'submodule'
-        if @args[1] == 'add' 
-          unlock_feat :sublet
-        elsif @args[1] == 'update'
-          unlock_feat :renovations
-        end
-      when 'svn'
-        unlock_feat :dinosaur
-      when 'tag'
-        unlock_feat :label_wizard
-      when 'whatchanged'
-        unlock_feat :historian
-      end
-    end
-
-    def execute_git_command
-      git = ENV["GIT"] || "git"
-      cmd = Array(git) + @args
-      exec(*cmd)
-    end
-
-    def unlock_feat(feat)
-      @completed = Completed.instance
-
-      unless @completed.exists?(feat)
-        @completed.add(feat)
-        Reporter.feat_completed(feat)
-      end
+      exec(*@args.to_exec)
     end
   end
 end
