@@ -26,11 +26,7 @@ module GitFeats
 
     def new_connection
       # Create git-feats connection
-      connection = Faraday.new(:url => URL) do |faraday|
-        faraday.request  :url_encoded
-        faraday.adapter  Faraday.default_adapter
-      end
-      connection
+      Faraday.new(:url => URL)
     end
 
     # Construct the body for the upload feats post
@@ -38,8 +34,7 @@ module GitFeats
       {
         :username  => Config.username,
         :key       => Config.api_key,
-        :history   => History.data,
-        :completed => Completed.data
+        :history   => History.data
       }
     end
   end
