@@ -1,26 +1,18 @@
 # git-feats [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/cknadler/git-feats) [![Dependency Status](https://gemnasium.com/cknadler/git-feats.png)](https://gemnasium.com/cknadler/git-feats) 
 
-Complete git feats from the command line!
+`git-feats` is a command line wrapper for `git` that allows you to complete feats (achievements).
 
 ## Installation
 
-Currently still in development and not on rubygems. Eventually: 
-
     $ gem install git-feats
+    
+`git-feats` is is best aliased as `git`, so you can type `$ git <command>` as you normally would and complete feats. See [alias](#alias) for instructions.
 
 ## Usage
 
-#### Alias
+#### With Alias
 
-`git-feats` works best when aliased as `git`. Paste the following into your shell config file.
-
-```
-alias git=git-feats
-```
-
-#### Git
-
-After you alias `git-feats`, just keep using `git` like you always have. Occasionally, you will complete feats and it will look like this:
+If you alias `git-feats`, just keep using `git` like you always have. Occasionally, you will complete feats and it will look like this:
 
 ```
 $ git status
@@ -42,11 +34,27 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ```
 
+#### Without Alias
+
+If you don't alias `git` to `git-feats` you can still use `git-feats` in place of `git`:
+
+```
+$ git-feats status
+```
+
+## Alias
+
+Add the following to your `.bash_profile` or other startup script:
+
+```
+alias git=git-feats
+```
+
 ## Contributing
 
-git-feats has a dead simple interface for making feats. 
+`git-feats` has a dead simple interface for making feats. 
 
-Simply add a feat to the `lib/git-feats/feats/feats.yml` file and it will work in the gem.
+Simply add a feat to the [feats file][feats-file] and it will work in the gem.
 
 If you are looking to contribute, that is a great place to start.
 
@@ -55,7 +63,7 @@ Also, the following:
 * Tests (probably RSpec)
 * Code Cleanup
 
-Any suggestions are also welcomed with open arms.
+Any suggestions are also welcomed with open arms. Please fork, send pull requests
 
 #### How to contribute
 
@@ -64,3 +72,5 @@ Any suggestions are also welcomed with open arms.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[feats-file]: https://github.com/cknadler/git-feats/blob/master/lib/git-feats/feats/feats.yml
