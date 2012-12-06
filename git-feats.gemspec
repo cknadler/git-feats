@@ -4,13 +4,33 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'git-feats/version'
 
 Gem::Specification.new do |s|
-  s.name          = "git-feats"
-  s.version       = GitFeats::VERSION
-  s.authors       = ["Chris Knadler"]
-  s.email         = ["takeshi91k@gmail.com"]
-  s.description   = "git achievements from the command line"
-  s.summary       = "git achievements"
-  s.homepage      = "https://github.com/cknadler/git-feats"
+  s.name        = "git-feats"
+  s.version     = GitFeats::VERSION
+  s.authors     = ["Chris Knadler"]
+  s.email       = ["takeshi91k@gmail.com"]
+  s.homepage    = "https://github.com/cknadler/git-feats"
+  s.license     = "MIT"
+
+  s.summary     = "git achievements from the command line"
+  s.description = <<desc
+  `git-feats` is a command line utility which adds achievements to git.
+
+  Based on your `git` usage, you will complete feats.
+
+  It can used on its own or as a `git` wrapper.
+
+  Wrapping `git`:
+
+    Use `git` as you normally would.
+
+    $ git status
+
+  Without wrapping `git`:
+
+    Use `git-feats` in place of `git`.
+
+    $ git-feats status
+desc
   
   s.required_ruby_version = ">= 1.9.3"
 
