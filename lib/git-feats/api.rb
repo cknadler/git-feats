@@ -22,7 +22,7 @@ module GitFeats
 
     private
 
-    # Return the faraday connection or load a new one
+    # Return the faraday connection or create one
     def conn
       @conn ||= new_connection
     end
@@ -31,7 +31,6 @@ module GitFeats
       # Create git-feats connection
       Faraday.new(:url => URL) do |faraday|
         faraday.request  :url_encoded
-        faraday.response :logger
         faraday.adapter  Faraday.default_adapter
       end
     end
