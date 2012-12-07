@@ -1,6 +1,6 @@
 # git-feats [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/cknadler/git-feats) [![Dependency Status](https://gemnasium.com/cknadler/git-feats.png)](https://gemnasium.com/cknadler/git-feats) 
 
-`git-feats` is a command line wrapper for `git` that allows you to complete feats (achievements).
+`git-feats` is a command line wrapper for `git` that allows you to complete feats based on your `git` usage.
 
 ## Installation
 
@@ -50,6 +50,27 @@ Add the following to your `.bash_profile` or other startup script:
 alias git=git-feats
 ```
 
+## .com
+
+`git-feats` has a sweet web frontend at [gitfeats.com](http://gitfeats.com).
+
+Linking your account is as easy as:
+
+```
+git config --global feats.key <your api key>
+```
+
+## Credits
+
+git-feats was lovingly developed by:
+
+* [Chris Knadler](https://github.com/cknadler)
+* [Jennifer Coryell](https://github.com/dasmoose)
+* [Ian Eckert](https://github.com/ieckert)
+
+git-feats was inspired by [git-achievements](https://github.com/icefox/git-achievements) by [Benjamin Mayor](https://github.com/icefox).
+
+
 ## Contributing
 
 `git-feats` has a dead simple interface for making feats. 
@@ -58,12 +79,12 @@ Simply add a feat to the [feats file][feats-file] and it will work in the gem.
 
 If you are looking to contribute, that is a great place to start.
 
-Also, the following:
+Also, git-feats needs the following:
 
 * Tests (probably RSpec)
 * Code Cleanup
 
-Any suggestions are also welcomed with open arms. Please fork, send pull requests
+Any suggestions are also welcomed with open arms. Please fork, send pull requests and make issues.
 
 #### How to contribute
 
@@ -72,5 +93,12 @@ Any suggestions are also welcomed with open arms. Please fork, send pull request
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Copyright
+
+Copyright (c) 2012 Chris Knadler, Jennifer Coryell and Ian Eckert. 
+
+See LICENSE for details.
 
 [feats-file]: https://github.com/cknadler/git-feats/blob/master/lib/git-feats/feats/feats.yml
