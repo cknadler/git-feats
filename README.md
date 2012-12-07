@@ -6,7 +6,9 @@
 
     $ gem install git-feats
     
-`git-feats` is is best aliased as `git`, so you can type `$ git <command>` as you normally would and complete feats. See [alias](#alias) for instructions.
+`git-feats` is is best aliased as `git`, so you can type `$ git <command>` as you normally would and complete feats.
+
+See [alias](#alias) for instructions.
 
 ## Usage
 
@@ -68,7 +70,7 @@ git-feats was lovingly developed by:
 * [Jennifer Coryell](https://github.com/dasmoose)
 * [Ian Eckert](https://github.com/ieckert)
 
-git-feats was inspired by [git-achievements](https://github.com/icefox/git-achievements) by [Benjamin Mayor](https://github.com/icefox).
+git-feats was inspired by [git-achievements](https://github.com/icefox/git-achievements).
 
 
 ## Contributing
