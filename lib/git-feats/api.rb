@@ -10,10 +10,13 @@ module GitFeats
 
     def upload_feats
       # Post json to git-feats
-      conn.post do |req|
-        req.url '/api/post_feats'
-        req.headers['Content-Type'] = 'application/json'
-        req.body = upload_feats_body.to_json
+      begin
+        conn.post do |req|
+          req.url '/api/post_feats'
+          req.headers['Content-Type'] = 'application/json'
+          req.body = upload_feats_body.to_json
+        end
+      rescue
       end
     end
 
@@ -26,7 +29,11 @@ module GitFeats
 
     def new_connection
       # Create git-feats connection
-      Faraday.new(:url => URL)
+      Faraday.new(:url => URL) do |faraday|
+        faraday.request  :url_encoded
+        faraday.response :logger
+        faraday.adapter  Faraday.default_adapter
+      end
     end
 
     # Construct the body for the upload feats post
