@@ -11,8 +11,8 @@ module GitFeats
     end
 
     # Run shortcut
-    def self.run(args)
-      Runner.new(args).run
+    def self.run(*args)
+      new(*args).run
     end
 
     # Execute git command
