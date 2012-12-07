@@ -6,7 +6,7 @@ module GitFeats
 
     extend self
 
-    URL = 'http://localhost:3000'
+    URL = 'http://gitfeats.com'
 
     def upload_feats
       # Post json to git-feats
