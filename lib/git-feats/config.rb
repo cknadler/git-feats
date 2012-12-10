@@ -3,28 +3,22 @@ module GitFeats
 
     extend self
 
-    CONFIG_CMD = "git config --global feats.key"
+    CONFIG_USER_CMD = "git config --global github.user"
+    CONFIG_KEY_CMD = "git config --global feats.key"
 
     # Returns the config value for username
-    def username
-      @username ||= config_value.split('-')[0]
+    def name
+      @name ||= `#{CONFIG_USER_CMD}`.chomp
     end
 
     # Returns the config value for api key
-    def api_key
-      @api_key ||= config_value.split('-')[1].chomp
+    def key
+      @key ||= `#{CONFIG_KEY_CMD}`.chomp
     end
 
     # Check if config exists and is configured properly
     def exists?
-      username && api_key
-    end
-
-    private
-
-    # loads the config value from the global git config file
-    def config_value
-      @config_value ||= `#{CONFIG_CMD}`
+      name && key
     end
   end
 end

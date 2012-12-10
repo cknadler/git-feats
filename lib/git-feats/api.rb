@@ -6,7 +6,7 @@ module GitFeats
 
     extend self
 
-    URL = 'http://gitfeats.com'
+    URL = 'http://www.gitfeats.com'
 
     def upload_feats
       # Post json to git-feats
@@ -38,8 +38,8 @@ module GitFeats
     # Construct the body for the upload feats post
     def upload_feats_body
       {
-        :username  => Config.username,
-        :key       => Config.api_key,
+        :username  => Config.name,
+        :key       => Config.key,
         :history   => History.data
       }
     end
