@@ -148,7 +148,7 @@
     :count: 1
 
 "pull":
-  :assimilation:
+  :archer:
     :name: "Archer"
     :desc: "Fetched from and merged with another repository with git pull"
     :count: 1
@@ -244,7 +244,7 @@
     :count: 1
 
 "whatchanged":
-  :historian:
+  :forgetful:
     :name: "Forgetful"
     :desc: "Showed the difference each commit introduced with git whatchanged"
     :count: 1
