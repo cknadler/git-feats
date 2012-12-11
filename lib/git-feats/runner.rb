@@ -24,10 +24,6 @@ module GitFeats
         update_feats
       when "version" || "--version"
         version
-      when "stats"
-        stats
-      when "feats"
-        feats
       else
         exec_args
       end
@@ -44,14 +40,6 @@ module GitFeats
     def version
       puts "git-feats version #{GitFeats::VERSION}" 
       exec_args
-    end
-
-    def stats
-      
-    end
-
-    def feats
-
     end
 
     def exec_args
