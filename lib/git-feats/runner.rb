@@ -17,15 +17,33 @@ module GitFeats
 
     # Execute git command
     def run
-      puts @args[0]
+      
+      # Check for git-feats commands
       case @args[0]
       when "update-feats"
-        if Config.exists?
-          API.upload_feats
-        end
+        update_feats
+      when "version" || "--version"
+        version
       else
-        exec(*@args.to_exec)
+        exec_args
       end
+    end
+
+    private
+
+    def update_feats
+      if Config.exists?
+        API.upload_feats
+      end
+    end
+
+    def version
+      puts "git-feats version #{GitFeats::VERSION}" 
+      exec_args
+    end
+
+    def exec_args
+      exec(*@args.to_exec)
     end
   end
 end
