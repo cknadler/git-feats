@@ -14,7 +14,7 @@ module GitFeats
     def serialize(path, data)
       # Make a path to the data file if one doesn't already exist
       dir = File.dirname path
-      FileUtils.mkpath(dir) unless File.directory?(dir)
+      FileUtils.mkdir(dir) unless File.directory?(dir)
 
       File.open(path, "w") do |f|
         f.puts data.to_json
