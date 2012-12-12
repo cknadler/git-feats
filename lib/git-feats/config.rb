@@ -18,7 +18,7 @@ module GitFeats
 
     # Check if config exists and is configured properly
     def exists?
-      name && key
+      !name.empty? && !key.empty?
     end
   end
 end
