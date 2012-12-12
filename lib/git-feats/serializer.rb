@@ -1,4 +1,5 @@
 require 'json'
+require 'fileutils'
 
 module GitFeats
   module Serializer
@@ -13,8 +14,7 @@ module GitFeats
     # Returns nothing
     def serialize(path, data)
       # Make a path to the data file if one doesn't already exist
-      dir = File.dirname path
-      FileUtils.mkdir(dir) unless File.directory?(dir)
+      mkpath_to path
 
       File.open(path, "w") do |f|
         f.puts data.to_json
@@ -34,6 +34,14 @@ module GitFeats
           puts e
         end
       end 
+    end
+
+    private
+
+    def mkpath_to(path)
+      unless File.exists? path
+        FileUtils.mkpath File.dirname(path)      
+      end
     end
   end
 end
