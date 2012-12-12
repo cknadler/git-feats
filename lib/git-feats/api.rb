@@ -18,9 +18,9 @@ module GitFeats
           req.headers['Content-Type'] = 'application/json'
           req.body = upload_feats_body.to_json
         end
-        puts "Successfully updated!\n\n"
+        puts
       rescue
-        puts "Connection failed...\n\n"
+        puts "Connection failed!\n\n"
       end
     end
 
