@@ -11,12 +11,16 @@ module GitFeats
     def upload_feats
       # Post json to git-feats
       begin
+        puts "Updating feats on gitfeats.com..."
+        # Attempt to update feats
         conn.post do |req|
           req.url '/api/post_feats'
           req.headers['Content-Type'] = 'application/json'
           req.body = upload_feats_body.to_json
         end
+        puts "Successfully updated!\n\n"
       rescue
+        puts "Connection failed...\n\n"
       end
     end
 
