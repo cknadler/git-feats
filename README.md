@@ -12,7 +12,7 @@ See [alias](#alias) for instructions.
 
 ## Usage
 
-#### With Alias
+#### With alias
 
 If you alias `git-feats`, just keep using `git` like you always have. Occasionally, you will complete feats and it will look like this:
 
@@ -36,12 +36,27 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ```
 
-#### Without Alias
+#### Without alias
 
 If you don't alias `git` to `git-feats` you can still use `git-feats` in place of `git`:
 
 ```
 $ git-feats status
+```
+
+#### git-feats commands
+
+git-feats also has commands that git-feats specific and don't mess with git.
+
+
+```
+$ git feats
+
+usage: git feats <command>
+
+commands:
+  update  Update your feats and command history on gitfeats.com
+  help    Display git-feats specific help
 ```
 
 ## Alias
@@ -57,6 +72,10 @@ alias git=git-feats
 `git-feats` has a sweet web frontend at [gitfeats.com](http://gitfeats.com).
 
 Linking your account is as easy as:
+
+```
+git config --global github.user <your github username>
+```
 
 ```
 git config --global feats.key <your api key>

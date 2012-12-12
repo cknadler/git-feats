@@ -1,3 +1,12 @@
+# Alpha Releases
+
+## 0.0.6 (2012-12-12)
+
+* adds 'feats help' command
+* changes 'update-feats' to 'feats update'
+* fixes serialization bug
+* adds much better 'feats update' dialogue
+
 ## 0.0.4 (2012-12-11)
 
 * adds `version` command
