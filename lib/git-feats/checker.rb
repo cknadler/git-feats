@@ -4,9 +4,6 @@ module GitFeats
     extend self
 
     # Main interface for checking feats
-    #
-    # @params[GitFeats::Args] Takes in args.
-    # @return[GitFeats::History] Prints out history and completed feats, returns the history serialized.
     def check(args)
 
       # Load history and completed
