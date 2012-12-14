@@ -44,4 +44,8 @@ desc
   s.add_runtime_dependency "faraday", "~> 0.8.4"
 
   s.add_development_dependency "rake",     "~> 10.0.2"
+
+  #TODO: Remove these.
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "simplecov"
 end

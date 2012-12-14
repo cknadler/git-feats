@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>git-feats <a href="https://codeclimate.com/github/cknadler/git-feats"><img src="https://codeclimate.com/badge.png" alt="Code Climate"></a> <a href="https://gemnasium.com/cknadler/git-feats"><img src="https://gemnasium.com/cknadler/git-feats.png" alt="Dependency Status"></a></h1>
+
+<p><code>git-feats</code> is a command line wrapper for <code>git</code> that allows you to complete feats based on your <code>git</code> usage.</p>
+
+<h2>Installation</h2>
+
+<pre class="code ruby"><code>$ gem install git-feats
+</code></pre>
+
+<p><code>git-feats</code> is is best aliased as <code>git</code>, so you can type <code>$ git &lt;command&gt;</code> as you normally would and complete feats.</p>
+
+<p>See <a href="#alias">alias</a> for instructions.</p>
+
+<h2>Usage</h2>
+
+<h4>With alias</h4>
+
+<p>If you alias <code>git-feats</code>, just keep using <code>git</code> like you always have. Occasionally, you will complete feats and it will look like this:</p>
+
+<pre class="code ruby"><code>$ git status
+
+********************************************************************************
+                                Feat Completed!                                 
+                                 Status Report                                  
+                 Viewed the working tree status with git status                 
+********************************************************************************
+
+# On branch master
+# Changes not staged for commit:
+#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+#
+#   modified:   README.md
+#
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+
+</code></pre>
+
+<h4>Without alias</h4>
+
+<p>If you don&#39;t alias <code>git</code> to <code>git-feats</code> you can still use <code>git-feats</code> in place of <code>git</code>:</p>
+
+<pre class="code ruby"><code>$ git-feats status
+</code></pre>
+
+<h4>git-feats commands</h4>
+
+<p>git-feats also has commands that git-feats specific and don&#39;t mess with git.</p>
+
+<pre class="code ruby"><code>$ git feats
+
+usage: git feats &lt;command&gt;
+
+commands:
+  update  Update your feats and command history on gitfeats.com
+  help    Display git-feats specific help
+</code></pre>
+
+<h2>Alias</h2>
+
+<p>Add the following to your <code>.bash_profile</code> or other startup script:</p>
+
+<pre class="code ruby"><code>alias git=git-feats
+</code></pre>
+
+<h2>.com</h2>
+
+<p><code>git-feats</code> has a sweet web frontend at <a href="http://gitfeats.com">gitfeats.com</a>.</p>
+
+<p>Linking your account is as easy as:</p>
+
+<pre class="code ruby"><code>git config --global github.user &lt;your github username&gt;
+</code></pre>
+
+<pre class="code ruby"><code>git config --global feats.key &lt;your api key&gt;
+</code></pre>
+
+<h2>Credits</h2>
+
+<p>git-feats was lovingly developed by:</p>
+
+<ul>
+<li><a href="https://github.com/cknadler">Chris Knadler</a></li>
+<li><a href="https://github.com/dasmoose">Jennifer Coryell</a></li>
+<li><a href="https://github.com/ieckert">Ian Eckert</a></li>
+</ul>
+
+<p>git-feats was inspired by <a href="https://github.com/icefox/git-achievements">git-achievements</a>.</p>
+
+<h2>Contributing</h2>
+
+<p><code>git-feats</code> has a dead simple interface for making feats. </p>
+
+<p>Simply add a feat to the <a href="https://github.com/cknadler/git-feats/blob/master/lib/git-feats/feats/feats.yml">feats file</a> and it will work in the gem.</p>
+
+<p>If you are looking to contribute, that is a great place to start.</p>
+
+<p>Also, git-feats needs the following:</p>
+
+<ul>
+<li>Tests (probably RSpec)</li>
+<li>Code Cleanup</li>
+</ul>
+
+<p>Any suggestions are also welcomed with open arms. Please fork, send pull requests and make issues.</p>
+
+<h4>How to contribute</h4>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am &#39;Add some feature&#39;</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+<h2>Copyright</h2>
+
+<p>Copyright (c) 2012 Chris Knadler, Jennifer Coryell and Ian Eckert. </p>
+
+<p>See LICENSE for details.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed Dec 12 19:19:17 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.3 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
