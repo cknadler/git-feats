@@ -1,0 +1,12 @@
+lib/git-feats.rb 9bcf6197b9d4244c394d42e54d8fe1695af3b9cc
+lib/git-feats/api.rb 4729a101c0084c9750df13824eeb7e94f95fd0c1
+lib/git-feats/args.rb ae4e8289b7b6af901019b3ee5c8691dc9ecc3a5d
+lib/git-feats/feats.rb 1ebffc3d92eb38832ba87260df862b3e73a8a36b
+lib/git-feats/config.rb b9cc3a7137c72d8c90a0f74594a953e45c29e06d
+lib/git-feats/runner.rb 92659ee4ff2573dfb3ebae0c7d5ddfb0e937f462
+lib/git-feats/version.rb 28ba47037b771f1a9a9834f8e7232e4882f65162
+lib/git-feats/history.rb 8553e4edab5b58ab5209ebd93bad10d754df3ff5
+lib/git-feats/checker.rb 635b5b1ccf62244513bbed76e69be98d37877835
+lib/git-feats/reporter.rb 2ffee2291c8d7b6ca73855b9fa4dfc25b2a78e0d
+lib/git-feats/completed.rb 5637e76abf7f934da146aa92a410e3a64f989e77
+lib/git-feats/serializer.rb cf585a4f05b4bc431eabcb62721b6d08354e27a4
