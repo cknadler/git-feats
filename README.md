@@ -81,13 +81,12 @@ git config --global github.user <your github username>
 git config --global feats.key <your api key>
 ```
 
-## Credits
-
-git-feats was lovingly developed by:
+## Contributors
 
 * [Chris Knadler](https://github.com/cknadler)
 * [Jennifer Coryell](https://github.com/dasmoose)
 * [Ian Eckert](https://github.com/ieckert)
+* [Mike Wood](https://github.com/mykewould)
 
 git-feats was inspired by [git-achievements](https://github.com/icefox/git-achievements).
 
