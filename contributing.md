@@ -18,3 +18,5 @@ Any suggestions are also welcomed with open arms. Please fork, send pull request
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[feats-file]: https://github.com/cknadler/git-feats/blob/master/lib/git-feats/feats/feats.yml
