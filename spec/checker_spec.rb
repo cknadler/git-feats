@@ -33,12 +33,12 @@ describe GitFeats::Checker do
     let(:meth)  { :check }
     subject     { klass.method(meth) }
     its(:arity) { should eq(1) }
-    let(:args)  { GitFeats::Args.new([:some_args]) }
+    #TODO: Refactor the following code.
     context "when args is valid" do
       let(:args) { GitFeats::Args.new(["status"]) }
       it "should add one to the history of status" do
         status_num          = GitFeats::History.unserialize["status"]
-        klass.should_receive(:upload_feats)
+        klass.should_not_receive(:upload_feats)
         klass.send(meth, args)
         expected_status_num = GitFeats::History.unserialize["status"]
         expect(expected_status_num).to eq(status_num + 1)
@@ -54,17 +54,22 @@ describe GitFeats::Checker do
       end 
     end
 
-    it "should always call Completed.unserialize" do
-      GitFeats::Completed.should_receive(:unserialize)
-      klass.send(meth, args)
-    end
-    it "should always call Completed.serialize" do
-      GitFeats::Completed.should_receive(:serialize)
-      klass.send(meth, args)
-    end
-    it "should always call History.serialize" do
-      GitFeats::History.should_receive(:serialize)
-      klass.send(meth, args)
+    context "when args are not valid" do 
+      let(:args)  { GitFeats::Args.new(["some_arg"]) }
+      it "should not add one to the history of status" do
+        klass.should_not_receive(:upload_feats)
+        klass.send(meth, args)
+        expected_status_num = GitFeats::History.unserialize["some_arg"]
+        expect(expected_status_num).to be_nil
+      end
+      it "should not add anything to completed history" do
+        clear_completed
+        expect(GitFeats::Completed.unserialize).to eq([])
+        klass.should_not_receive(:upload_feats)
+        klass.send(meth, args)
+        expect(GitFeats::Completed.unserialize).to eq([])
+        restore_completed
+      end 
     end
   end
 
