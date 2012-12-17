@@ -2,14 +2,28 @@ require File.expand_path('../spec_helper', __FILE__)
 require 'git-feats'
 
 PRIVATE_METHODS = [:upload_feats]
+PATH            = Dir.home + '/.git_feats/'
+HISTORY_PATH    = PATH + "history"
+COMPLETED_PATH  = PATH + "completed"
 
 def stub_config_exists(exists)
   GitFeats::Config.stub(:exists?) { exists } 
 end
 
+
 describe GitFeats::Checker do
   let(:klass) { GitFeats::Checker }
   subject     { klass }
+
+  def clear_completed
+    %x(cp #{COMPLETED_PATH} #{COMPLETED_PATH + "_old"})
+    %x(rm #{COMPLETED_PATH})
+  end
+
+  def restore_completed
+    %x(cp #{COMPLETED_PATH + "_old"} #{COMPLETED_PATH})
+    %x(rm #{COMPLETED_PATH + "_old"})
+  end
 
   PRIVATE_METHODS.each do |private_method|
     its(:private_methods) { should include(private_method) }
@@ -19,6 +33,39 @@ describe GitFeats::Checker do
     let(:meth)  { :check }
     subject     { klass.method(meth) }
     its(:arity) { should eq(1) }
+    let(:args)  { GitFeats::Args.new([:some_args]) }
+    context "when args is valid" do
+      let(:args) { GitFeats::Args.new(["status"]) }
+      it "should add one to the history of status" do
+        status_num          = GitFeats::History.unserialize["status"]
+        klass.should_receive(:upload_feats)
+        klass.send(meth, args)
+        expected_status_num = GitFeats::History.unserialize["status"]
+        expect(expected_status_num).to eq(status_num + 1)
+      end
+
+      it "should add completed status to completed history" do
+        clear_completed
+        expect(GitFeats::Completed.unserialize).to eq([])
+        klass.should_receive(:upload_feats)
+        klass.send(meth, args)
+        expect(GitFeats::Completed.unserialize).to eq(["status_report"])
+        restore_completed
+      end 
+    end
+
+    it "should always call Completed.unserialize" do
+      GitFeats::Completed.should_receive(:unserialize)
+      klass.send(meth, args)
+    end
+    it "should always call Completed.serialize" do
+      GitFeats::Completed.should_receive(:serialize)
+      klass.send(meth, args)
+    end
+    it "should always call History.serialize" do
+      GitFeats::History.should_receive(:serialize)
+      klass.send(meth, args)
+    end
   end
 
   describe ".upload_feats" do
@@ -34,7 +81,7 @@ describe GitFeats::Checker do
         expect(klass.send(meth)).to eq(upload_string)
       end
     end
-    
+
     context "when GitFeats::Config does NOT exist" do
       before { stub_config_exists(false) }
       it "should do nothing and return nil" do
