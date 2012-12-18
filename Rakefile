@@ -19,7 +19,7 @@ desc "Rebuilds the gem for quick testing."
 task :rebuild_gem do
   `gem uni git-feats`
   `gem build git-feats.gemspec`
-  `gem i git-feats-*.gem`
+  `gem i git-feats*.gem`
 end
 
 RSpec::Core::RakeTask.new(:spec)

@@ -10,32 +10,26 @@ module GitFeats
       Completed.unserialize
       History.unserialize
 
-      # request flag
-      upload = false
-
       # Check for feats and update history
       Feats.all.each do |pattern, feats|
-        if args.match?(pattern)
-          History.add(pattern)
-
-          feats.each do |feat, value|
-            if History.count(pattern) >= value[:count]
-              unless Completed.exists?(feat)
-                Completed.add(feat) 
-                Reporter.report(value)
-                upload = true
-              end
-            end
-          end
+        next unless args.match?(pattern)
+        History.add(pattern)
+        
+        feats.each do |feat, value|
+          next unless complete_and_report?(feat, value, pattern)
+          Completed.add(feat) 
+          Reporter.report(value)
+          upload_feats if feat == feats.keys.last
         end
       end
-
-      # upload feats if the request flag is set
-      upload_feats if upload
 
       # Write out history and completed feats
       Completed.serialize
       History.serialize
+    end
+
+    def complete_and_report?(feat, value, pattern)
+      History.count(pattern) >= value[:count] && !Completed.exists?(feat)
     end
 
     private
