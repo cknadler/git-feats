@@ -35,7 +35,7 @@ describe GitFeats::Checker do
     its(:arity) { should eq(1) }
     #TODO: Refactor the following code.
     context "when args is valid" do
-      let(:args) { GitFeats::Args.new(["status"]) }
+      let(:args) { GitFeats::Args.new(["status", "add", "blah"]) }
       it "should add one to the history of status" do
         status_num          = GitFeats::History.unserialize["status"]
         klass.should_not_receive(:upload_feats)
