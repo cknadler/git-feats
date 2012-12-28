@@ -22,9 +22,9 @@ describe GitFeats::Checker do
   end
 
   describe ".upload_feats" do
-    let(:meth)            { :upload_feats }
-    subject               { klass.method(meth) }
-    its(:arity)           { should eq(0) }
+    let(:meth)  { :upload_feats }
+    subject     { klass.method(meth) }
+    its(:arity) { should eq(0) }
 
     context "when GitFeats::Config exists" do
       let(:upload_string) { "API upload feats report string" }

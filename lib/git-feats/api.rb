@@ -6,22 +6,35 @@ module GitFeats
 
     extend self
 
-    URL = 'http://www.gitfeats.com'
+    URL = 'http://localhost:3000'
 
-    def upload_feats
-      # Post json to git-feats
-      begin
-        # Attempt to update feats
-        conn.post do |req|
-          req.url '/api/feats'
-          req.headers['Content-Type'] = 'application/json'
-          req.body = upload_feats_body.to_json
+    def upload_feats(background=true)
+      # spawn the request as a background process
+      if background
+        job = fork do
+          begin
+            post_feats
+          rescue
+          end
         end
-      rescue
+        Process.detach(job)
+      
+      # make the request normally
+      else
+        response = post_feats
+        puts response
       end
     end
 
     private
+
+    def post_feats
+      conn.post do |req|
+        req.url '/api/feats'
+        req.headers['Content-Type'] = 'application/json'
+        req.body = upload_feats_body.to_json
+      end
+    end
 
     # Return the faraday connection or create one
     def conn
