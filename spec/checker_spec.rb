@@ -16,13 +16,17 @@ describe GitFeats::Checker do
   subject     { klass }
 
   def clear_completed
-    %x(cp #{COMPLETED_PATH} #{COMPLETED_PATH + "_old"})
-    %x(rm #{COMPLETED_PATH})
+    if File.exists?(COMPLETED_PATH)
+      %x(cp #{COMPLETED_PATH} #{COMPLETED_PATH + "_old"})
+      %x(rm #{COMPLETED_PATH})
+    end
   end
 
   def restore_completed
-    %x(cp #{COMPLETED_PATH + "_old"} #{COMPLETED_PATH})
-    %x(rm #{COMPLETED_PATH + "_old"})
+    if File.exists?(COMPLETED_PATH + "_old")
+      %x(cp #{COMPLETED_PATH + "_old"} #{COMPLETED_PATH})
+      %x(rm #{COMPLETED_PATH + "_old"})
+    end
   end
 
   PRIVATE_METHODS.each do |private_method|
