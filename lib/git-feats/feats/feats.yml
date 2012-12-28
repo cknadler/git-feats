@@ -41,7 +41,7 @@
     :desc: "Changed branches with git checkout"
     :count: 1
 
-"checout -b":
+"checkout -b":
   :impulse_buy:
     :name: "Impulse Buy" 
     :desc: "Created a new branch with git checkout -b"
