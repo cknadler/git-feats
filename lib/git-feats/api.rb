@@ -11,13 +11,13 @@ module GitFeats
     def upload_feats(background=true)
       # spawn the request as a background process
       if background
-        job = fork do
+        request = fork do
           begin
             post_feats
           rescue
           end
         end
-        Process.detach(job)
+        Process.detach(request)
       
       # make the request normally
       else

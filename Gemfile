@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'rake'
+
 # ignored with Travis
 group :development do
   gem 'yard'

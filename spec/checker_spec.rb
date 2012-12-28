@@ -33,9 +33,11 @@ describe GitFeats::Checker do
     let(:meth)  { :check }
     subject     { klass.method(meth) }
     its(:arity) { should eq(1) }
+
     #TODO: Refactor the following code.
     context "when args is valid" do
       let(:args) { GitFeats::Args.new(["status"]) }
+
       it "should add one to the history of status" do
         status_num          = GitFeats::History.unserialize["status"]
         klass.should_not_receive(:upload_feats)
@@ -55,13 +57,15 @@ describe GitFeats::Checker do
     end
 
     context "when args are not valid" do 
-      let(:args)  { GitFeats::Args.new(["some_arg"]) }
+      let(:args) { GitFeats::Args.new(["some_arg"]) }
+
       it "should not add one to the history of status" do
         klass.should_not_receive(:upload_feats)
         klass.send(meth, args)
         expected_status_num = GitFeats::History.unserialize["some_arg"]
         expect(expected_status_num).to be_nil
       end
+
       it "should not add anything to completed history" do
         clear_completed
         expect(GitFeats::Completed.unserialize).to eq([])
