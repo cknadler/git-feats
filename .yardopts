@@ -1,0 +1,9 @@
+--title 'GitFeats Documentation'
+--readme README.md
+--markup markdown
+--markup-provider redcarpet
+--output-dir ./doc
+lib/**/*.rb
+-
+HISTORY.md
+LICENSE
