@@ -1,7 +1,8 @@
 require File.expand_path('../spec_helper', __FILE__)
 require 'git-feats'
 
-PRIVATE_METHODS = [:upload_feats]
+PRIVATE_METHODS = [ :complete_and_report?, :get_matched_feat_vals,
+                    :load_achievements, :write_achievements ]
 PATH            = Dir.home + '/.git_feats/'
 HISTORY_PATH    = PATH + "history"
 COMPLETED_PATH  = PATH + "completed"
@@ -29,9 +30,7 @@ describe GitFeats::Checker do
     end
   end
 
-  PRIVATE_METHODS.each do |private_method|
-    its(:private_methods) { should include(private_method) }
-  end
+  its(:private_methods) { should include(*PRIVATE_METHODS) }
 
   describe ".check" do
     let(:meth)  { :check }
@@ -40,21 +39,19 @@ describe GitFeats::Checker do
 
     #TODO: Refactor the following code.
     context "when args is valid" do
-      let(:args) { GitFeats::Args.new(["status", "add", "blah"]) }
+      let(:args) { GitFeats::Args.new(["submodule", "add", "status", "commit"]) }
+      let(:submod_count) { GitFeats::History.unserialize["submodule add"] }
       it "should add one to the history of status" do
-        status_num          = GitFeats::History.unserialize["status"]
-        klass.should_not_receive(:upload_feats)
+        eq_submod_count = submod_count
         klass.send(meth, args)
-        expected_status_num = GitFeats::History.unserialize["status"]
-        expect(expected_status_num).to eq(status_num + 1)
+        expect(submod_count).to eq(eq_submod_count)
       end
 
       it "should add completed status to completed history" do
         clear_completed
         expect(GitFeats::Completed.unserialize).to eq([])
-        klass.should_receive(:upload_feats)
         klass.send(meth, args)
-        expect(GitFeats::Completed.unserialize).to eq(["status_report"])
+        expect(GitFeats::Completed.unserialize).to eq(["sublet"])
         restore_completed
       end 
     end
@@ -80,26 +77,24 @@ describe GitFeats::Checker do
     end
   end
 
-  describe ".upload_feats" do
-    let(:meth)  { :upload_feats }
-    subject     { klass.method(meth) }
-    its(:arity) { should eq(0) }
-
-    context "when GitFeats::Config exists" do
-      let(:upload_string) { "API upload feats report string" }
-      before { stub_config_exists(true) }
-      it "should call GitFeats::API.upload_feats" do
-        GitFeats::API.should_receive(:upload_feats).and_return(upload_string)
-        expect(klass.send(meth)).to eq(upload_string)
-      end
-    end
-
-    context "when GitFeats::Config does NOT exist" do
-      before { stub_config_exists(false) }
-      it "should do nothing and return nil" do
-        GitFeats::API.should_not_receive(:upload_feats)
-        expect(klass.send(meth)).to be_nil
-      end
-    end
-  end
+  # describe ".upload_feats" do
+  #   let(:meth)            { :upload_feats }
+  #   subject               { klass.method(meth) }
+  #   its(:arity)           { should eq(0) }
+  #   context "when GitFeats::Config exists" do
+  #     let(:upload_string) { "API upload feats report string" }
+  #     before { stub_config_exists(true) }
+  #     it "should call GitFeats::API.upload_feats" do
+  #       GitFeats::API.should_receive(:upload_feats).and_return(upload_string)
+  #       expect(klass.send(meth)).to eq(upload_string)
+  #     end
+  #   end
+  #   context "when GitFeats::Config does NOT exist" do
+  #     before { stub_config_exists(false) }
+  #     it "should do nothing and return nil" do
+  #       GitFeats::API.should_not_receive(:upload_feats)
+  #       expect(klass.send(meth)).to be_nil
+  #     end
+  #   end
+  # end
 end
