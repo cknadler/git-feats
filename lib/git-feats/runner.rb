@@ -39,9 +39,7 @@ module GitFeats
 
     # Run git-feats specific update command
     def feats_update
-      if Config.exists?
-        API.upload_feats
-      end
+      API.upload_feats if Config.exists?
     end
 
     # Run git-feats specific help command
@@ -66,12 +64,7 @@ help
     # Precondition: The first argument is 'feats'
     # ex: 'git feats update'
     def run_feats_cmd
-      case @args[1]
-      when "update"
-        feats_update
-      else
-        feats_help
-      end
+      @args[1] == "update" ? feats_update : feats_help
     end
 
     # Exec the args as a git command

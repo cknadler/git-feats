@@ -34,7 +34,7 @@ module GitFeats
       pattern.split.each_with_index do |arg, index|
         return false unless arg == self[index]
       end
-      return true
+      true
     end
   end
 end

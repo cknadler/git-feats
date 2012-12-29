@@ -9,21 +9,16 @@ module GitFeats
     URL = 'http://localhost:3000'
 
     def upload_feats(background=true)
-      # spawn the request as a background process
-      if background
-        request = fork do
-          begin
-            post_feats
-          rescue
-          end
-        end
-        Process.detach(request)
-      
       # make the request normally
-      else
-        response = post_feats
-        puts response
+      return puts post_feats unless background
+      # spawn the request as a background process
+      request = fork do
+        begin
+          post_feats
+        rescue
+        end
       end
+      Process.detach(request)
     end
 
     private
@@ -43,17 +38,15 @@ module GitFeats
 
     def new_connection
       # Create git-feats connection
-      Faraday.new(:url => URL) do |faraday|
-        faraday.request  :url_encoded
-      end
+      Faraday.new(:url => URL) { |faraday| faraday.request  :url_encoded } 
     end
 
     # Construct the body for the upload feats post
     def upload_feats_body
       {
-        :username  => Config.name,
-        :key       => Config.key,
-        :history   => History.data
+        username: Config.name,
+        key:      Config.key,
+        history:  History.data
       }
     end
   end

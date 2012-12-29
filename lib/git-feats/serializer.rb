@@ -15,10 +15,7 @@ module GitFeats
     def serialize(path, data)
       # Make a path to the data file if one doesn't already exist
       mkpath_to path
-
-      File.open(path, "w") do |f|
-        f.puts data.to_json
-      end
+      File.open(path, "w") { |f| f.puts data.to_json }
     end
 
     # unserialize a json file to a ruby object
@@ -27,21 +24,18 @@ module GitFeats
     #
     # Returns a ruby object or nil
     def unserialize(path)
-      if File.exists?(path) && !File.zero?(path)
-        begin
-          return JSON.parse(IO.binread(path))
-        rescue JSON::ParserError => e
-          puts e
-        end
-      end 
+      return unless File.exists?(path) && !File.zero?(path)
+      begin
+        return JSON.parse(IO.binread(path))
+      rescue JSON::ParserError => e
+        puts e
+      end
     end
 
     private
 
     def mkpath_to(path)
-      unless File.exists? path
-        FileUtils.mkpath File.dirname(path)      
-      end
+      FileUtils.mkpath File.dirname(path) if File.exists? path
     end
   end
 end

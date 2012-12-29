@@ -1,8 +1,9 @@
 require File.expand_path('../spec_helper', __FILE__)
 require 'git-feats'
 
-PRIVATE_METHODS = [ :complete_and_report?, :get_matched_feat_vals,
-                    :load_achievements, :write_achievements ]
+PRIVATE_METHODS = [ :reportable?, :get_matched_feat_vals,
+                    :load_achievements, :write_achievements,
+                    :report_and_upload ]
 PATH            = Dir.home + '/.git_feats/'
 HISTORY_PATH    = PATH + "history"
 COMPLETED_PATH  = PATH + "completed"

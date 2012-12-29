@@ -5,25 +5,22 @@ module GitFeats
 
     # Main interface for checking feats
     def check(args)
-
       load_achievements
-
       return if (feat_vals = get_matched_feat_vals(args)).nil?
-      
       History.add(feat_vals[:name])
-
-      if complete_and_report?(feat_vals)
-        Completed.add(feat_vals[:name_sym]) 
-        Reporter.report(feat_vals)
-        API.upload_feats if Config.exists?
-      end
-
+      report_and_upload(feat_vals) if reportable?(feat_vals)
       write_achievements
     end
 
     private
 
-    def complete_and_report?(feat_vals)
+    def report_and_upload(feat_vals)
+      Completed.add(feat_vals[:name_sym]) 
+      Reporter.report(feat_vals)
+      API.upload_feats if Config.exists?
+    end
+
+    def reportable?(feat_vals)
       History.count(feat_vals[:name]) >= feat_vals[:count] && 
       !(Completed.exists?(feat_vals[:name_sym]))
     end

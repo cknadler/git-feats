@@ -16,11 +16,7 @@ module GitFeats
     end
 
     def add(pattern)
-      if @history[pattern]
-        @history[pattern] += 1
-      else
-        @history[pattern] = 1
-      end
+      @history[pattern] = (@history[pattern] ? @history[pattern] + 1 : 1)
     end
 
     def count(pattern)
