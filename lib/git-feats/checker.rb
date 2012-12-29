@@ -6,37 +6,47 @@ module GitFeats
     # Main interface for checking feats
     def check(args)
 
-      # Load history and completed
-      Completed.unserialize
-      History.unserialize
+      load_achievements
 
-      # Check for feats and update history
-      Feats.all.each do |pattern, feats|
-        next unless args.match?(pattern)
-        History.add(pattern)
-        
-        feats.each do |feat, value|
-          next unless complete_and_report?(feat, value, pattern)
-          Completed.add(feat) 
-          Reporter.report(value)
-          upload_feats if feat == feats.keys.last
-        end
+      return if (feat_vals = get_matched_feat_vals(args)).nil?
+      
+      History.add(feat_vals[:name])
+
+      if complete_and_report?(feat_vals)
+        Completed.add(feat_vals[:name_sym]) 
+        Reporter.report(feat_vals)
+        API.upload_feats if Config.exists?
       end
 
-      # Write out history and completed feats
-      Completed.serialize
-      History.serialize
-    end
-
-    def complete_and_report?(feat, value, pattern)
-      History.count(pattern) >= value[:count] && !Completed.exists?(feat)
+      write_achievements
     end
 
     private
 
-    # call upload feats from API if config values exist
-    def upload_feats
-      API.upload_feats if Config.exists?
+    def complete_and_report?(feat_vals)
+      History.count(feat_vals[:name]) >= feat_vals[:count] && 
+      !(Completed.exists?(feat_vals[:name_sym]))
+    end
+
+    # Load history and completed
+    def load_achievements
+      Completed.unserialize
+      History.unserialize
+    end
+
+    # Write out history and completed feats
+    def write_achievements
+      Completed.serialize
+      History.serialize
+    end
+
+    def get_matched_feat_vals(args)
+      feat = Feats.all.detect { |pattern, feats| args.match?(pattern) }
+      return if feat.nil?
+      { name:     feat.first, 
+        name_sym: feat.last.keys.first,
+        desc:     feat[1].first.last[:desc],
+        count:    feat[1].first.last[:count] }
     end
   end
 end
