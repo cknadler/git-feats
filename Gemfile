@@ -6,6 +6,7 @@ gem 'rake'
 
 # ignored with Travis
 group :development do
+  # docs
   gem 'yard'
 
   # file system notifications
@@ -18,6 +19,9 @@ group :development do
 
   # growl notifications for tests
   gem 'ruby_gntp'
+
+  # debugging
+  gem 'pry'
 end
 
 # installed with Travis
