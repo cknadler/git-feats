@@ -1,4 +1,4 @@
-# git-feats [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/cknadler/git-feats) [![Dependency Status](https://gemnasium.com/cknadler/git-feats.png)](https://gemnasium.com/cknadler/git-feats) 
+# git-feats [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/cknadler/git-feats) 
 
 `git-feats` is a command line wrapper for `git` that allows you to complete feats based on your `git` usage.
 
