@@ -4,7 +4,11 @@ module GitFeats
     # Makes a new Args object
     def initialize(*args)
       super
-      @executable = ENV["GIT"] || "git"
+      @executable = if `which hub` != ""
+        "hub"
+      else
+        ENV["GIT"] || "git"
+      end
     end
 
     # Returns an executable command 
